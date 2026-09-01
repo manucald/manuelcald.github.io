@@ -1,0 +1,151 @@
+/* ==========================================================================
+   VARIABLES Y ESTÉTICA EDITORIAL
+   ========================================================================== */
+:root {
+    --color-principal: #2B7A4B;
+    --color-principal-transparente: rgba(43, 122, 75, 0.75); 
+    --color-crema: #F4F1EA;
+    --color-amarillo: #F7D046;
+    --color-acento: #E64833;
+    --color-texto: #1C1C1C;
+    --color-blanco: #FAFAFA;
+    --fuente-titulos: 'Syne', sans-serif;
+    --fuente-texto: 'DM Sans', sans-serif;
+    --sombra-solida: 6px 6px 0px var(--color-texto);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--fuente-texto);
+    background-color: var(--color-crema);
+    color: var(--color-texto);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, .logo { font-family: var(--fuente-titulos); font-weight: 800; }
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; }
+
+.container { width: 95vw; max-width: 1400px; margin: 0 auto; }
+.text-center { text-align: center; }
+
+.bg-crema { background-color: var(--color-crema); }
+.bg-amarillo { background-color: var(--color-amarillo); }
+.bg-oscuro { background-color: var(--color-texto); color: var(--color-crema); }
+.texture-bg {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   NAVEGACIÓN Y HERO
+   ========================================================================== */
+.header { background-color: var(--color-blanco); border-bottom: 3px solid var(--color-texto); position: sticky; top: 0; z-index: 100; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; height: 75px; }
+.logo { font-size: 1.5rem; color: var(--color-acento); text-transform: uppercase; letter-spacing: -1px; }
+.nav ul { display: flex; gap: 1.5rem; font-weight: 500; flex-wrap: wrap; }
+.nav a:hover { color: var(--color-acento); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+.hero { position: relative; min-height: 85vh; background-size: cover; background-position: center; display: flex; align-items: center; border-bottom: 4px solid var(--color-texto); }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-principal-transparente); z-index: 1; }
+.hero-content { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; color: var(--color-blanco); padding: 3rem 0; }
+
+/* Contenedor perfil izquierdo */
+.hero-profile { width: 100%; max-width: 320px; display: flex; flex-direction: column; align-items: center; }
+.profile-pic { width: 100%; height: 320px; object-fit: cover; border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; border: 4px solid var(--color-blanco); box-shadow: 8px 8px 0px rgba(0,0,0,0.5); margin-bottom: 1rem; transform: rotate(-3deg); }
+.hero-title { font-size: 2.8rem; line-height: 1; margin-bottom: 0.5rem; text-shadow: 4px 4px 0px rgba(0,0,0,0.3); letter-spacing: -1px; text-align: center; width: 100%; }
+.hero-subtitle { font-size: 1.2rem; font-family: var(--fuente-titulos); background-color: var(--color-acento); display: inline-block; padding: 4px 12px; transform: rotate(1deg); text-align: center; }
+
+/* Introducción al medio (Texto libre) */
+.hero-intro { flex: 1; min-width: 280px; max-width: 480px; margin: 0 2rem; color: var(--color-blanco); font-size: 1.15rem; text-align: center; font-weight: 500; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+
+/* Contenedor contacto derecho */
+.hero-contact { background-color: var(--color-crema); color: var(--color-texto); padding: 2rem; border: 3px solid var(--color-texto); box-shadow: var(--sombra-solida); min-width: 280px; transform: rotate(2deg); }
+.hero-contact h3 { margin-bottom: 1rem; font-size: 1.4rem; border-bottom: 2px solid var(--color-texto); padding-bottom: 0.5rem; }
+.hero-contact ul li { margin-bottom: 1rem; font-size: 1.1rem; }
+.hero-contact a:hover { color: var(--color-acento); text-decoration: underline; }
+
+/* Flecha de Scroll (3 repeticiones, más abajo, derecha) */
+.scroll-arrow { position: absolute; right: 4%; bottom: 3%; width: 60px; height: 100px; color: var(--color-blanco); z-index: 10; animation: bounceDrawn 2s infinite ease-in-out; }
+@keyframes bounceDrawn { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+
+/* ==========================================================================
+   BENTO BOX LAYOUT (2x2 + Video)
+   ========================================================================== */
+.section { padding: 5rem 0; border-bottom: 3px solid var(--color-texto); }
+.compact-section { padding: 3rem 0; }
+h2.section-title { font-size: 3.5rem; margin-bottom: 3rem; display: inline-block; position: relative; z-index: 1; }
+h2.section-title.small-title { font-size: 2.5rem; margin-bottom: 1.5rem; }
+h2.section-title::after { content: ""; position: absolute; bottom: 5px; left: -5px; width: 105%; height: 40%; background-color: var(--color-principal); opacity: 0.3; z-index: -1; transform: rotate(-1deg); }
+
+.bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+
+.bento-box { background: var(--color-blanco); border: 3px solid var(--color-texto); box-shadow: var(--sombra-solida); display: flex; flex-direction: column; overflow: hidden; }
+
+.box-irregular-1 { border-radius: 4px 20px 4px 20px; }
+.box-irregular-2 { border-radius: 20px 4px 20px 4px; }
+.box-irregular-3 { border-radius: 12px; }
+
+.box-header { background-color: var(--color-amarillo); padding: 15px; border-bottom: 3px solid var(--color-texto); text-align: center; font-size: 1.2rem; }
+
+.box-video { grid-column: 1 / -1; }
+.box-video .box-header { background-color: var(--color-principal); color: var(--color-blanco); }
+
+/* ==========================================================================
+   CARRUSEL
+   ========================================================================== */
+.carousel-container { position: relative; width: 100%; height: 450px; display: flex; align-items: center; }
+.box-video .carousel-container { height: 600px; }
+
+.carousel-track { display: flex; width: 100%; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.slide { flex: 0 0 100%; height: 100%; scroll-snap-align: center; background-color: #E2E8F0; display: flex; justify-content: center; align-items: center; }
+.slide img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.slide img:hover { transform: scale(1.02); }
+
+.video-wrapper { width: 100%; height: 100%; position: relative; }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+.nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: var(--color-texto); color: var(--color-crema); border: 2px solid var(--color-texto); width: 45px; height: 45px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 10; box-shadow: 3px 3px 0px rgba(0,0,0,0.5); transition: all 0.2s ease; display: flex; justify-content: center; align-items: center; }
+.nav-btn:hover { background-color: var(--color-acento); color: var(--color-blanco); transform: translateY(-50%) scale(1.1); }
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* ==========================================================================
+   HABILIDADES / STICKERS
+   ========================================================================== */
+.skills-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
+.skill-tag { background: var(--color-blanco); border: 3px solid var(--color-texto); padding: 10px 20px; font-family: var(--fuente-titulos); font-size: 1.1rem; box-shadow: 4px 4px 0px var(--color-texto); border-radius: 2px 15px 4px 15px; transition: transform 0.2s; cursor: default; }
+.skill-tag:hover { transform: translateY(-5px) rotate(2deg); background: var(--color-acento); color: var(--color-blanco); }
+
+/* ==========================================================================
+   LIGHTBOX Y BOTÓN VOLVER ARRIBA
+   ========================================================================== */
+.lightbox { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(28, 28, 28, 0.95); z-index: 9999; display: none; justify-content: center; align-items: center; cursor: zoom-out; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border: 4px solid var(--color-blanco); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.close-lightbox { position: absolute; top: 20px; right: 40px; color: var(--color-blanco); font-size: 3rem; font-weight: bold; }
+
+.btn-top { display: inline-block; background: var(--color-acento); color: var(--color-blanco); padding: 12px 24px; font-family: var(--fuente-titulos); text-transform: uppercase; font-size: 1.1rem; border: 3px solid var(--color-texto); box-shadow: 4px 4px 0px var(--color-texto); transform: rotate(-2deg); transition: transform 0.2s; }
+.btn-top:hover { transform: translateY(-5px) rotate(0deg); background: var(--color-blanco); color: var(--color-texto); }
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .bento-grid { gap: 1.5rem; }
+}
+
+@media (max-width: 850px) {
+    .hero-content { justify-content: center; text-align: center; gap: 3rem; }
+    .hero-intro { margin: 0; max-width: 100%; order: 3; } /* El texto pasa abajo en móviles */
+    .hero-contact { transform: rotate(0); width: 100%; order: 2; }
+    .scroll-arrow { display: none; } 
+    h2.section-title { font-size: 2.5rem; }
+    .bento-grid { grid-template-columns: 1fr; } 
+    .carousel-container { height: 350px; }
+    .box-video .carousel-container { height: 250px; }
+}
+.footer { text-align: center; padding: 3rem 0; font-family: var(--fuente-titulos); }
